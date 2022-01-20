@@ -1,0 +1,15 @@
+<%= render './navbar' %>
+
+<div class="col-8">
+  <%= form_for [@restaurant, @review] do |f| %>
+   <div class="review_form">
+      <%= f.label :content %>
+      <%= f.text_area :content, maxlength: 255, size: 30 %>
+    </div>
+    <div class="review_form">
+      <%= f.label :rating %>
+      <%= f.number_field :rating, in: 0..5, step: 1 %>
+    </div>
+    <%= f.submit %>
+  <% end %>
+</div>

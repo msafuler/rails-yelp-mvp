@@ -1,0 +1,31 @@
+<%= render './navbar' %>
+
+<div class="restaurant_details">
+  <h2><%= @restaurant.name %></h2>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.phone_number %></p>
+  <p><%= @restaurant.category %></p>
+</div>
+
+<div class="reviews">
+  <% @reviews.each do |review| %>
+    <p><%= review.content %></p>
+    <p><%= review.rating %></p>
+    <hr>
+  <% end %>
+</div>
+
+<div class="col-8 write_review">
+  <h2>Write a review!</h2>
+  <%= form_for [@restaurant, @review] do |f| %>
+   <div class="review_form">
+      <%= f.label :content %>
+      <%= f.text_area :content, maxlength: 255, size: 30 %>
+    </div>
+    <div class="review_form">
+      <%= f.label :rating %>
+      <%= f.number_field :rating, in: 0..5, step: 1 %>
+    </div>
+    <%= f.submit %>
+  <% end %>
+</div>
